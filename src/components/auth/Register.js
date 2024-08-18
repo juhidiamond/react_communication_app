@@ -22,23 +22,23 @@ const Register = () => {
         let formErrors = {};
 
         if (!formData.name) {
-            formErrors.name = 'Full Name is required';
+            formErrors.name = 'Please Enter username.';
         }
 
         if (!formData.email) {
-            formErrors.email = 'Email is required';
+            formErrors.email = 'Please Enter email.';
         } else if (!validateEmail(formData.email)) {
             formErrors.email = 'Please enter a valid email address';
         }
 
-        if (!formData.password) {
-            formErrors.password = 'Password is required';
+        if (formData.password.length < 8) {
+            formErrors.password = 'Password must be 8 characters in length';
         }
 
         if (!formData.confirm_password) {
-            formErrors.confirm_password = 'Confirm Password is required';
+            formErrors.confirm_password = 'Please Enter confirm password.';
         } else if (formData.password !== formData.confirm_password) {
-            formErrors.confirm_password = 'Passwords do not match';
+            formErrors.confirm_password = 'Use same password.';
         }
 
         setErrors(formErrors);
